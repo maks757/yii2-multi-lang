@@ -3,7 +3,7 @@ Yii framework multi language extention
 
 ***Migrate***
 
-	yii migrate —migrationPath=@vendor/black-lamp/yii2-multi-lang/migration
+	yii migrate --migrationPath=@vendor/black-lamp/yii2-multi-lang/migration
 
 ***Config***
 
