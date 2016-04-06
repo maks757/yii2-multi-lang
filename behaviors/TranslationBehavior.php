@@ -31,12 +31,27 @@ class TranslationBehavior extends Behavior
     public $translationClass;
     public $relationColumn;
 
-    public function getTranslation() {
+    public function getTranslation($languageId = null) {
         /* @var $modelClass ActiveRecordInterface */
         /* @var $language ActiveRecordInterface */
+        /* @var $translation ActiveRecordInterface */
 
         $modelClass = $this->translationClass;
-        // get current language
+
+        if(!empty($languageId)) {
+            $language = Language::findOne($languageId);
+            if($language) {
+                $translation = $modelClass::findOne([
+                    'language_id' => $language->getPrimaryKey(),
+                    $this->relationColumn => $this->owner->getPrimaryKey()
+                ]);
+
+                if($translation) {
+                    return $translation;
+                }
+            }
+        }
+
         $language = Language::findOne(['lang_id' => Yii::$app->language]);
 
         // try to find translation on current language
