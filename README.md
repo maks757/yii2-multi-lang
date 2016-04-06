@@ -1,13 +1,31 @@
-# yii2-multi-lang
-Yii framework multi language extention
+Multi-language Extension for Yii 2
+=====================================
 
-***Migrate***
+INSTALLATION
+------------
+
+### Migrate language table
 
 	yii migrate --migrationPath=@vendor/black-lamp/yii2-multi-lang/migration
 
-***Config***
+### Configure UrlManager
 
 	'UrlManager' => [
 		'class' => 'bl\multilang\MultiLangUrlManager'
 		...
 	]
+
+### Configure TranslationBehavior
+
+```php
+    public function behaviors()
+    {
+        return [
+            'translation' => [
+                'class' => TranslationBehavior::className(),
+                'translationClass' => ArticleTranslation::className(),
+                'relationColumn' => 'article_id'
+            ]
+        ];
+    }
+```
