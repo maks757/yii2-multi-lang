@@ -2,6 +2,7 @@
 
 namespace bl\multilang\entities;
 
+use Yii;
 use yii\db\ActiveRecord;
 
 /**
@@ -27,6 +28,21 @@ class Language extends ActiveRecord {
         return Language::findOne([
             'default' => true
         ]);
+    }
+
+    /**
+     * @return Language Current language, or default
+     */
+    public static function getCurrent() {
+        $language = Language::findOne([
+            'lang_id' => Yii::$app->language
+        ]);
+
+        if(!$language) {
+            $language = static::getDefault();
+        }
+
+        return $language;
     }
 
     public static function findOrDefault($languageId) {
