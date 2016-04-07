@@ -8,7 +8,7 @@ class m160323_114747_en_US_language extends Migration
     {
         $this->insert('language', [
             'name' => 'English',
-            'lang_id' => 'en_US',
+            'lang_id' => 'en-US',
             'show' => true,
             'active' => true,
             'default' => true
@@ -20,7 +20,7 @@ class m160323_114747_en_US_language extends Migration
     public function safeDown()
     {
         $this->delete('language', [
-            'lang_id' => 'en_US'
+            'lang_id' => 'en-US'
         ]);
 
         return true;
