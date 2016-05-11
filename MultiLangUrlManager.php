@@ -16,6 +16,8 @@ use const YII_ENV_TEST;
 
 class MultiLangUrlManager extends BaseUrlManager {
 
+    public $language;
+
     public $languages = [];
 
     public $enableLocaleUrls = true;
@@ -101,31 +103,31 @@ class MultiLangUrlManager extends BaseUrlManager {
         if ($this->enableLocaleUrls && $this->languages) {
             $params = (array) $params;
             if (isset($params[$this->languageParam])) {
-                $language = $params[$this->languageParam];
+                $this->language = $params[$this->languageParam];
                 unset($params[$this->languageParam]);
                 $languageRequired = true;
             } else {
-                $language = Yii::$app->language;
+                $this->language = Yii::$app->language;
                 $languageRequired = false;
             }
             if (
-                $languageRequired && $language===$this->getDefaultLanguage() &&
+                $languageRequired && $this->language===$this->getDefaultLanguage() &&
                 !$this->enableDefaultLanguageUrlCode && !$this->enableLanguagePersistence && !$this->enableLanguageDetection
             ) {
                 $languageRequired = false;
             }
             $url = parent::createUrl($params);
-            if (!$languageRequired && !$this->enableDefaultLanguageUrlCode && $language===$this->getDefaultLanguage()) {
+            if (!$languageRequired && !$this->enableDefaultLanguageUrlCode && $this->language===$this->getDefaultLanguage()) {
                 return  $url;
             } else {
-                $key = array_search($language, $this->languages);
+                $key = array_search($this->language, $this->languages);
                 $base = $this->showScriptName ? $this->getScriptUrl() : $this->getBaseUrl();
                 $length = strlen($base);
                 if (is_string($key)) {
-                    $language = $key;
+                    $this->language = $key;
                 }
                 if (!$this->keepUppercaseLanguageCode) {
-                    $language = strtolower($language);
+                    $this->language = strtolower($this->language);
                 }
                 if ($this->suffix!=='/') {
                     if (count($params)!==1) {
@@ -134,7 +136,7 @@ class MultiLangUrlManager extends BaseUrlManager {
                         $url = rtrim($url, '/');
                     }
                 }
-                return $length ? substr_replace($url, "$base/$language", 0, $length) : "/$language$url";
+                return $length ? substr_replace($url, "$base/$this->language", 0, $length) : "/$this->language$url";
             }
         } else {
             return parent::createUrl($params);
