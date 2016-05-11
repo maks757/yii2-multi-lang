@@ -45,10 +45,7 @@ class TranslationBehavior extends Behavior
                     'language_id' => $language->getPrimaryKey(),
                     $this->relationColumn => $this->owner->getPrimaryKey()
                 ]);
-
-                if($translation) {
-                    return $translation;
-                }
+                return $translation;
             }
         }
 
