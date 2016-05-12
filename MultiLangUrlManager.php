@@ -12,7 +12,6 @@ use yii\web\Cookie;
 use yii\web\NotFoundHttpException;
 use yii\web\Request;
 use yii\web\UrlManager as BaseUrlManager;
-use const YII_ENV_TEST;
 
 class MultiLangUrlManager extends BaseUrlManager {
 
