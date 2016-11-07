@@ -1,6 +1,6 @@
 <?php
 
-namespace bl\multilang\entities;
+namespace maks757\multilang\entities;
 
 use Yii;
 use yii\db\ActiveRecord;

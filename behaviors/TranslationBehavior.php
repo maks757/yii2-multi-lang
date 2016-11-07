@@ -1,7 +1,7 @@
 <?php
-namespace bl\multilang\behaviors;
+namespace maks757\multilang\behaviors;
 
-use bl\multilang\entities\Language;
+use maks757\multilang\entities\Language;
 use Yii;
 use yii\base\Behavior;
 use yii\db\ActiveRecordInterface;
@@ -9,7 +9,7 @@ use yii\db\ActiveRecordInterface;
 /**
  * Class SeoDataBehavior
  * @author Gutsulyak Vadim <guts.vadim@gmail.com>
- * @package bl\multilang\behaviors
+ * @package maks757\multilang\behaviors
  *
  * ```php
  *  public function behaviors() {

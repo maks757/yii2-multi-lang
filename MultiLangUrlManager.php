@@ -1,8 +1,8 @@
 <?php
 
-namespace bl\multilang;
+namespace maks757\multilang;
 
-use bl\multilang\entities\Language;
+use maks757\multilang\entities\Language;
 use Yii;
 use yii\base\Exception;
 use yii\base\InvalidConfigException;

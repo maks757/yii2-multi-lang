@@ -1,8 +1,8 @@
 <?php
 
-namespace bl\multilang\widgets\languageList;
+namespace maks757\multilang\widgets\languageList;
 
-use bl\multilang\entities\Language;
+use maks757\multilang\entities\Language;
 use Yii;
 use yii\base\Widget;
 
