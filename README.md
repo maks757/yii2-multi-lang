@@ -6,7 +6,7 @@ INSTALLATION
 
 ### You can use this migrate language table or yours ActiveRecord model.
 
-	yii migrate --migrationPath=@vendor/black-lamp/yii2-multi-lang/migration
+	yii migrate --migrationPath=@vendor/maks757/yii2-multi-lang/migration
 	
 ### If you use yours ActiveRecord model, please implements from ILanguage interface. 
 
