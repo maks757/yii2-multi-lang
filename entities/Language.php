@@ -2,6 +2,7 @@
 
 namespace maks757\multilang\entities;
 
+use maks757\multilang\components\ILanguage;
 use Yii;
 use yii\db\ActiveRecord;
 
@@ -15,7 +16,7 @@ use yii\db\ActiveRecord;
  * @property boolean active
  * @property boolean default
  */
-class Language extends ActiveRecord {
+class Language extends ActiveRecord implements ILanguage {
 
     public static function tableName() {
         return 'language';
@@ -54,4 +55,17 @@ class Language extends ActiveRecord {
         return $language;
     }
 
+    public function getLanguageChar()
+    {
+        return $this->lang_id;
+    }
+
+    /**
+     * @param string $lang_id
+     * @return ILanguage
+     */
+    public static function getLanguage($lang_id)
+    {
+        return Language::findOne(['lang_id' => $lang_id]);
+    }
 }
