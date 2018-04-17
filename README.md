@@ -5,24 +5,24 @@ INSTALLATION
 ------------
 
 ### You can use this migrate language table or yours ActiveRecord model.
+```text
+yii migrate --migrationPath=@vendor/maks757/yii2-multi-lang/migration
+```
 
-	yii migrate --migrationPath=@vendor/maks757/yii2-multi-lang/migration
-	
 ### If you use yours ActiveRecord model, please implements from ILanguage interface. 
-
 ```text
 maks757\multilang\components\ILanguage
 ```
 
-### Configure UrlManager
+### main.php configure UrlManager
+```text
+'UrlManager' => [
+	'class' => 'maks757\multilang\MultiLangUrlManager'
+	...
+]
+```
 
-	'UrlManager' => [
-		'class' => 'maks757\multilang\MultiLangUrlManager'
-		...
-	]
-
-### Configure TranslationBehavior
-
+### add to ActiveRecord configure TranslationBehavior
 ```php
     public function behaviors()
     {
