@@ -60,7 +60,7 @@ class MultiLangUrlManager extends UrlManager {
         if(!empty($_path_language)) {
             Yii::$app->language = $_path_language;
         }
-        $path = str_replace($_path_language.'/', '', $request->getPathInfo());
+        $path = preg_replace('/('.$_path_language.'(\/)*)*/', '', $request->getPathInfo(), 1);
         $request->setPathInfo($path);
         return parent::parseRequest($request);
     }
